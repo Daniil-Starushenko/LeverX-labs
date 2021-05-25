@@ -1,3 +1,3 @@
 # LeverX-labs
-
-##[task 1](/task1)
+[task 1](/task1)
+    задание первое
