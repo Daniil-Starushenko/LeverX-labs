@@ -1,1 +1,1 @@
-Main-Class: com.leverX.lab1.Main
+Main-Class: com.leverx.lab.Main

@@ -1,4 +1,4 @@
-package com.leverX.lab1;
+package com.leverx.lab;
 
 public class Main {
     public static void main(String[] args) {
