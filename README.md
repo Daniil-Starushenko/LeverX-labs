@@ -1,3 +1,3 @@
 # LeverX-labs
-#### Задание 1: [task 1](/task1)
-    Задание первое: создать базовый класс и привести примеры запуска из консоли, создания .jar 
+#### Task 1: [task 1](/task1)
+    The first task: create a base class and show how to run it from console, how to create .jar 
