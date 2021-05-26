@@ -1,34 +1,26 @@
-# Инструкция по сборке:
-## Создание .class и запуск с помощью javac
-* для того, чтобы создать файл с расширенинем `.class`, мы используем javac:
-* В терминале зайти в папку с файлом `Main.java` и выполнить команду *javac Main.java*
-это простейшая компиляция без занесения в директорию `target`
+# Instruction for building:
+## Creation .class and running with java
+* For creation  `.class`, we use javac:
+* In terminal from directory with `Main.java` file use command *javac Main.java*
 
 ![alt text](img/1.png)
 
-* Мы можем запустить программу из конcоли с помощью команды `java package1.package2.package3.Main` из `!!!`родительского каталога`!!!`
+* We can run this program from console with `java package1.package2.package3.Main` command from root directory.
 ![alt text](img/2.png)
 
-## Создание .jar и запуск из консоли
-*  Затем необходимо в родительском каталоге создать `.jar` c добавлением файла класса `package1/package2/package3/*.class`.
-Но для того, чтоб всё работало, нам необходимо задать `Main-Class` в `MANIFEST.MF`. 
-Для этого мы создадим файл `.txt` со строкой, которую мы хотим добавить в `MANIFEST.MF`
+## Building .jar and running this from console
+*  After that we need to build `.jar` in addition to class file `package1/package2/package3/*.class`.
+You must to add `Main-Class` into `MANIFEST.MF` which is located in `META-INF`. 
+For that we can create `.txt` file with line that contains `Main-Class` which we need to add to `MANIFEST.MF`.
 
 ![alt text](img/3.png)
-    `обязательно файл должен заканчиваться переходом на новую строку, иначе не будет работать.`
+    `file should be ended with new line`
 ![alt text](img/4.png)
 
-* после того, как мы всё подготовили, мы можем создать `.jar` в родительском каталоге с помощью команды `jar cfm main.jar manifest.txt com/leverX/lab1/*.class`, 
-которая создаст джарник и сделает слияние содержимого файла `manifest.txt` с `MANIFEST.MF`
+* We can create `.jar` int root directory with `jar cfm main.jar manifest.txt com/leverX/lab1/*.class` command
+which will create new jar with merged line from `manifest.txt` with `MANIFEST.MF`.
+* And than run it from terminal
 
 ![alt text](img/5.png)
 
-* Содержимое джарника можно посмотреть с помощью команды `jar xf main.jar`, и там залезть в `META-INF`
-* После создания джарника с указанием всего необходимого мы  можем запустить программу из родительской директории
-![alt text](img/6.png)
-
-
-
-### Дополнения:
-1. на всякий случай `manifest.txt` добавлен в родительский каталог
-2. в папке `img` лежат изображения-примеры
+* You can see `META-INF` directory with its content by using `jar xf main.jar` command to check if the  file is correct.
