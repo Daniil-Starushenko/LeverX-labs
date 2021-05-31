@@ -17,7 +17,7 @@ For that we can create `.txt` file with line that contains `Main-Class` which we
     `file should be ended with new line`
 ![alt text](img/4.png)
 
-* We can create `.jar` int root directory with `jar cfm main.jar manifest.txt com/leverX/lab1/*.class` command
+* We can create `.jar` in root directory with `jar cfm main.jar manifest.txt com/leverX/lab1/*.class` command
 which will create new jar with merged line from `manifest.txt` with `MANIFEST.MF`.
 * And than run it from terminal
 
