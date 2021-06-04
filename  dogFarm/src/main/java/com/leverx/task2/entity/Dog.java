@@ -6,13 +6,15 @@ package com.leverx.task2.entity;
  * @author danik;
  */
 public class Dog {
+    private int dogNumber;
     private Age age;
     private int yearsOld;
     private boolean isHealthy;
     private boolean isHungry;
     private boolean isDrewUp;
 
-    public Dog(int yearsOld, boolean isHealthy) {
+    public Dog(int yearsOld, boolean isHealthy, int dogNumber) {
+        this.dogNumber = dogNumber;
         this.yearsOld = yearsOld;
         this.isHealthy = isHealthy;
     }
@@ -57,5 +59,13 @@ public class Dog {
 
     public void setDrewUp(boolean drewUp) {
         isDrewUp = drewUp;
+    }
+
+    public int getDogNumber() {
+        return dogNumber;
+    }
+
+    public void setDogNumber(int dogNumber) {
+        this.dogNumber = dogNumber;
     }
 }
