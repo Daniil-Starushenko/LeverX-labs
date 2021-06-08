@@ -1,6 +1,6 @@
 package com.leverx.task2.entity;
 
-public class Vet extends Staff {
+public class Vet implements Staff {
 
     public void examineDog(Dog dog) {
         if (!dog.isHealthy()) {
