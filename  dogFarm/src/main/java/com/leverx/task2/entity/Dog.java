@@ -71,4 +71,14 @@ public class Dog {
     public void setDogNumber(int dogNumber) {
         this.dogNumber = dogNumber;
     }
+
+    @Override
+    public String toString() {
+        return dogNumber +
+                ", age=" + age +
+                ", yearsOld=" + yearsOld +
+                ", isHealthy=" + isHealthy +
+                ", isHungry=" + isHungry +
+                ", isDrewUp=" + isDrewUp;
+    }
 }

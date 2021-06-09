@@ -1,9 +1,10 @@
 package com.leverx.task2.controller;
 
+import com.leverx.task2.dal.OutputFileWriter;
 import com.leverx.task2.entity.*;
+import com.leverx.task2.service.DataParser;
 import com.leverx.task2.service.Day;
 import com.leverx.task2.service.DogCreator;
-
 import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * class <code>ApplicationController</code> is a controller of the app
+ * the main class <code>ApplicationController</code> is a controller of the app
  * with method <code>run</code> that runs and controls the app
  */
 class ApplicationController {
@@ -21,12 +22,18 @@ class ApplicationController {
     private Vet vet;
     private Caretakers caretakers;
     private Trainer trainer;
+    private String outputFilePath;
+    private Day day;
+    private DataParser dataParser;
+    private OutputFileWriter outputFileWriter;
 
     public ApplicationController() {
         dogCreator = new DogCreator();
         vet = new Vet();
         caretakers = new Caretakers();
         trainer = new Trainer();
+        outputFilePath = System.getProperty("user.home");
+        dataParser = new DataParser();
     }
 
     /**
@@ -34,6 +41,16 @@ class ApplicationController {
      * and runs the main service method <code></code>
      */
     protected void run() {
+        outputFileWriter = new OutputFileWriter(outputFilePath);
+
+        day = initializeDay();
+        logger.info("day is started");
+        outputFileWriter.writeOutputFile(
+                dataParser.parseData(day.feedYoungDogs(), "young dogs are feed: ")
+        );
+    }
+
+    private Day initializeDay() {
         List<Dog> dogs = new ArrayList<>();
         dogs = initializeDogs();
 
@@ -42,9 +59,9 @@ class ApplicationController {
             aviaries.add(new Aviary(dog));
         }
 
-        Day day = new Day(aviaries, dogs, vet, caretakers, trainer);
-        day.emulateDay();
+        return new Day(aviaries, dogs, vet, caretakers, trainer);
     }
+
 
     /**
      * method that initialize list of <code>Dog</code> objects
