@@ -28,12 +28,27 @@ public class Day {
     }
 
     public List<Dog> feedYoungDogs() {
-        List<Dog> youngDogs = dogs.stream()
-                                .filter(dog -> dog.getAge() == Age.YOUNG)
-                                .collect(Collectors.toList());
+        new FilterDogs();
+        List<Dog> youngDogs = FilterDogs.filterByAge(dogs, Age.YOUNG);
         youngDogs.forEach(dog -> caretakers.feedDog(dog));
 
         return youngDogs;
+    }
+
+    public List<Dog> feedAdultDogs() {
+        new FilterDogs();
+        List<Dog> adultDogs = FilterDogs.filterByAge(dogs, Age.ADULT);
+        adultDogs.forEach(dog -> caretakers.feedDog(dog));
+
+        return adultDogs;
+    }
+
+    public List<Dog> feedOldDogs() {
+        new FilterDogs();
+        List<Dog> oldDogs = FilterDogs.filterByAge(dogs, Age.OLD);
+        oldDogs.forEach(dog -> caretakers.feedDog(dog));
+
+        return oldDogs;
     }
 
 

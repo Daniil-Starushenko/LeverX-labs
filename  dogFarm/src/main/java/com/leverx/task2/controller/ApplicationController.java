@@ -7,9 +7,8 @@ import com.leverx.task2.service.Day;
 import com.leverx.task2.service.DogCreator;
 import org.apache.log4j.Logger;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.lang.reflect.Array;
+import java.util.*;
 
 /**
  * the main class <code>ApplicationController</code> is a controller of the app
@@ -23,7 +22,6 @@ class ApplicationController {
     private Caretakers caretakers;
     private Trainer trainer;
     private String outputFilePath;
-    private Day day;
     private DataParser dataParser;
     private OutputFileWriter outputFileWriter;
 
@@ -43,11 +41,26 @@ class ApplicationController {
     protected void run() {
         outputFileWriter = new OutputFileWriter(outputFilePath);
 
-        day = initializeDay();
-        logger.info("day is started");
+        Day day = initializeDay();
+        logger.info("new day is started: ");
+        outputFileWriter.writeOutputFile(Collections.singletonList(System.lineSeparator() + "new day is started:"));
+
         outputFileWriter.writeOutputFile(
-                dataParser.parseData(day.feedYoungDogs(), "young dogs are feed: ")
+                dataParser.parseData(day.feedYoungDogs(), "young dogs are feed with special food: ")
         );
+        logger.info("feed young dogs with special food");
+
+        outputFileWriter.writeOutputFile(
+                dataParser.parseData(day.feedAdultDogs(), "adult dogs are feed with special food: ")
+        );
+        logger.info("feed adult dogs with special food");
+
+        outputFileWriter.writeOutputFile(
+                dataParser.parseData(day.feedOldDogs(), "old dogs are feed with special food: ")
+        );
+        logger.info("feed old dogs with special food");
+
+
     }
 
     private Day initializeDay() {
