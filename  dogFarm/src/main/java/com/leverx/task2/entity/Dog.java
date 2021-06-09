@@ -13,10 +13,13 @@ public class Dog {
     private boolean isHungry;
     private boolean isDrewUp;
 
-    public Dog(int yearsOld, boolean isHealthy, int dogNumber) {
+    public Dog(int dogNumber, Age age, int yearsOld, boolean isHealthy, boolean isHungry, boolean isDrewUp) {
         this.dogNumber = dogNumber;
+        this.age = age;
         this.yearsOld = yearsOld;
         this.isHealthy = isHealthy;
+        this.isHungry = isHungry;
+        this.isDrewUp = isDrewUp;
     }
 
     public Dog() {}
