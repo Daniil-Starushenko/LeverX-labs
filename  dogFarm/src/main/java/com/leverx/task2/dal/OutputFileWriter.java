@@ -18,6 +18,7 @@ public class OutputFileWriter {
     public void writeOutputFile(List<String> lines) {
 
         try (FileWriter fileWriter = new FileWriter(file, true)) {
+            fileWriter.write(System.lineSeparator());
             for (String line : lines) {
                 fileWriter.write(line + System.lineSeparator());
             }

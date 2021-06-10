@@ -12,6 +12,7 @@ public class Dog {
     private boolean isHealthy;
     private boolean isHungry;
     private boolean isDrewUp;
+    private Job job;
 
     public Dog(int dogNumber, Age age, int yearsOld, boolean isHealthy, boolean isHungry, boolean isDrewUp) {
         this.dogNumber = dogNumber;
@@ -23,6 +24,14 @@ public class Dog {
     }
 
     public Dog() {}
+
+    public Job getJob() {
+        return job;
+    }
+
+    public void setJob(Job job) {
+        this.job = job;
+    }
 
     public Age getAge() {
         return age;
@@ -79,6 +88,7 @@ public class Dog {
                 ", yearsOld=" + yearsOld +
                 ", isHealthy=" + isHealthy +
                 ", isHungry=" + isHungry +
-                ", isDrewUp=" + isDrewUp;
+                ", isDrewUp=" + isDrewUp +
+                ", Job=" + job;
     }
 }

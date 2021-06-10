@@ -12,4 +12,10 @@ public class FilterDogs {
                     .filter(dog -> dog.getAge() == age)
                     .collect(Collectors.toList());
     }
+
+    public static List<Dog> filterByHealth(List<Dog> dogs, boolean isHealthy)  {
+        return dogs.stream()
+                .filter(dog -> dog.isHealthy() == isHealthy)
+                .collect(Collectors.toList());
+    }
 }

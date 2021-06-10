@@ -36,4 +36,13 @@ public class Aviary {
     public void setAviariesNumber(int aviariesNumber) {
         this.aviariesNumber = aviariesNumber;
     }
+
+    @Override
+    public String toString() {
+        return "Aviary number " +
+                aviariesNumber +
+                " with dog " +
+                dog.getDogNumber() +
+                " isClear=" + isClear;
+    }
 }

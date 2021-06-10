@@ -51,6 +51,6 @@ public class DogCreator {
     }
 
     private boolean isDrewUp(int yearsOld) {
-        return yearsOld >= 2;
+        return yearsOld >= 4;
     }
 }
