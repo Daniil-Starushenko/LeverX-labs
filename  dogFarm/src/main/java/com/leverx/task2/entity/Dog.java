@@ -14,16 +14,11 @@ public class Dog {
     private boolean isDrewUp;
     private Job job;
 
-    public Dog(int dogNumber, Age age, int yearsOld, boolean isHealthy, boolean isHungry, boolean isDrewUp) {
+    //dog is hungry when created
+    public Dog(int dogNumber) {
         this.dogNumber = dogNumber;
-        this.age = age;
-        this.yearsOld = yearsOld;
-        this.isHealthy = isHealthy;
-        this.isHungry = isHungry;
-        this.isDrewUp = isDrewUp;
+        isHungry = true;
     }
-
-    public Dog() {}
 
     public Job getJob() {
         return job;
