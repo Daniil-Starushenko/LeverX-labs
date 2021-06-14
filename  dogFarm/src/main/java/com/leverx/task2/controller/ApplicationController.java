@@ -37,40 +37,25 @@ class ApplicationController {
 
         feeding(day);
 
-        outputFileWriter.writeOutputFile(
-                dataParser.parseData(day.healDogs(), "sick dogs was healed: "));
-
         outputFileWriter.writeOutputFile(Collections.singletonList("aviaries was cleaned: "));
         outputFileWriter.writeOutputFile(day.cleanAviaries());
 
-        outputFileWriter.writeOutputFile(
-                dataParser.parseData(day.trainYoungDogs(), "young dogs was trained: ")
-        );
+        outResult(DayEmulator::trainYoungDogs, "young dogs was trained: ", day);
 
-        outputFileWriter.writeOutputFile(
-                dataParser.parseData(day.sendToWorkAdultDogs(), "adult dogs was send to work: ")
-        );
+        outResult(DayEmulator::sendToWorkAdultDogs, "adult dogs was send to work: ", day);
 
-        outputFileWriter.writeOutputFile(
-                dataParser.parseData(day.leaveOldDogsInAviaries(), "old dog left at aviaries: ")
-        );
+        outResult(DayEmulator::leaveOldDogsInAviaries, "old dog left at aviaries: ", day);
 
         outputFileWriter.writeOutputFile(Collections.singletonList("dogs are hungry: "));
         feeding(day);
     }
 
     private void feeding(DayEmulator day) {
-        outputFileWriter.writeOutputFile(
-                dataParser.parseData(day.feedYoungDogs(), "young dogs are feed with special food: ")
-        );
+        outResult(DayEmulator::feedYoungDogs, "young dogs are feed with special food: ", day);
 
-        outputFileWriter.writeOutputFile(
-                dataParser.parseData(day.feedAdultDogs(), "adult dogs are feed with special food: ")
-        );
+        outResult(DayEmulator::feedAdultDogs, "adult dogs are feed with special food: ", day);
 
-        outputFileWriter.writeOutputFile(
-                dataParser.parseData(day.feedOldDogs(), "old dogs are feed with special food: ")
-        );
+        outResult(DayEmulator::feedOldDogs, "old dogs are feed with special food: ", day);
     }
 
     private DayEmulator initializeDay() {
@@ -103,5 +88,13 @@ class ApplicationController {
         logger.info("dogs are created");
         outputFileWriter.writeOutputFile(dataParser.parseData(dogs, "dog farm contains dogs: "));
         return dogs;
+    }
+
+    private void outResult(FarmAction farmAction,
+                           String message,
+                           DayEmulator day) {
+        outputFileWriter.writeOutputFile(
+                dataParser.parseData(farmAction.doAction(day), message)
+        );
     }
 }
