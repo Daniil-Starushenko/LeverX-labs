@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class DogHealthInitializer extends DogInitializer {
     @Override
-    public boolean initParam(Dog dog) {
+    public Dog initParam(Dog dog) {
         dog.setHealthy(isHealthy());
         return checkNext(dog);
     }

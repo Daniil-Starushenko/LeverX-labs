@@ -16,11 +16,11 @@ public abstract class DogInitializer {
         return next;
     }
 
-    public abstract boolean initParam(Dog dog);
+    public abstract Dog initParam(Dog dog);
 
-    protected boolean checkNext(Dog dog) {
+    protected Dog checkNext(Dog dog) {
         if (nextInitializer == null) {
-            return true;
+            return dog;
         }
         return nextInitializer.initParam(dog);
     }

@@ -14,7 +14,6 @@ import java.util.Random;
 public class DayEmulator {
     private static final Logger logger = Logger.getLogger(DayEmulator.class.getName());
 
-    private FilterDogs filterDogs;
     private List<Aviary> aviaries;
     private List<Dog> dogs;
     private Vet vet;
@@ -30,29 +29,28 @@ public class DayEmulator {
     }
 
     public List<Dog> feedYoungDogs() {
-        new FilterDogs();
-        List<Dog> youngDogs = FilterDogs.filterByAge(dogs, Age.YOUNG);
+        List<Dog> youngDogs = DogsFilter.filterByAge(dogs, Age.YOUNG);
         youngDogs.forEach(dog -> caretakers.feedDog(dog));
 
         return youngDogs;
     }
 
     public List<Dog> feedAdultDogs() {
-        List<Dog> adultDogs = FilterDogs.filterByAge(dogs, Age.ADULT);
+        List<Dog> adultDogs = DogsFilter.filterByAge(dogs, Age.ADULT);
         adultDogs.forEach(dog -> caretakers.feedDog(dog));
 
         return adultDogs;
     }
 
     public List<Dog> feedOldDogs() {
-        List<Dog> oldDogs = FilterDogs.filterByAge(dogs, Age.OLD);
+        List<Dog> oldDogs = DogsFilter.filterByAge(dogs, Age.OLD);
         oldDogs.forEach(dog -> caretakers.feedDog(dog));
 
         return oldDogs;
     }
 
     public List<Dog> healDogs() {
-        List<Dog> illDogs = FilterDogs.filterByHealth(dogs, false);
+        List<Dog> illDogs = DogsFilter.filterByHealth(dogs, false);
         illDogs.forEach(dog -> vet.examineDog(dog));
 
         return illDogs;
@@ -67,14 +65,14 @@ public class DayEmulator {
     }
 
     public List<Dog> trainYoungDogs() {
-        List<Dog> dogsToTrain = FilterDogs.filterByAge(dogs, Age.YOUNG);
+        List<Dog> dogsToTrain = DogsFilter.filterByAge(dogs, Age.YOUNG);
         dogsToTrain.forEach(dog -> trainer.trainDog(dog));
         dogsToTrain.forEach(dog -> dog.setHungry(true));
         return dogsToTrain;
     }
 
     public List<Dog> sendToWorkAdultDogs() {
-        List<Dog> dogsToWork = FilterDogs.filterByAge(dogs, Age.ADULT);
+        List<Dog> dogsToWork = DogsFilter.filterByAge(dogs, Age.ADULT);
         dogsToWork.forEach(dog -> dog.setJob(chooseJobRandomly()));
         dogsToWork.forEach(dog -> dog.setHungry(true));
         return dogsToWork;
@@ -92,7 +90,7 @@ public class DayEmulator {
     }
 
     public List<Dog> leaveOldDogsInAviaries() {
-        List<Dog> oldDogs =  FilterDogs.filterByAge(dogs, Age.OLD);
+        List<Dog> oldDogs =  DogsFilter.filterByAge(dogs, Age.OLD);
         oldDogs.forEach(dog -> dog.setHungry(true));
         return oldDogs;
     }

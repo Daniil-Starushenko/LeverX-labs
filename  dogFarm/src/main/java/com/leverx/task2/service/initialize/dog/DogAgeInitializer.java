@@ -12,7 +12,7 @@ import static com.leverx.task2.entity.Age.YOUNG;
 public class DogAgeInitializer extends DogInitializer {
 
     @Override
-    public boolean initParam(Dog dog) {
+    public Dog initParam(Dog dog) {
         int yearsOld = yearsOld();
 
         dog.setYearsOld(yearsOld);

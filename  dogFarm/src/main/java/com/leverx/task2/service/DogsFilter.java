@@ -6,7 +6,7 @@ import com.leverx.task2.entity.Dog;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class FilterDogs {
+public class DogsFilter {
     public static List<Dog> filterByAge(List<Dog> dogs, Age age)  {
         return dogs.stream()
                     .filter(dog -> dog.getAge() == age)

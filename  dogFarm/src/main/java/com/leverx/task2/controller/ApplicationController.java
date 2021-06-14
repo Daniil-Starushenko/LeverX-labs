@@ -4,7 +4,7 @@ import com.leverx.task2.dal.OutputFileWriter;
 import com.leverx.task2.entity.*;
 import com.leverx.task2.service.DataParser;
 import com.leverx.task2.service.DayEmulator;
-import com.leverx.task2.service.DogCreator;
+import com.leverx.task2.service.initialize.dog.*;
 import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
@@ -20,20 +20,11 @@ import java.util.Random;
 class ApplicationController {
     private static final Logger logger = Logger.getLogger(ApplicationController.class.getName());
 
-    private DogCreator dogCreator;
-    private Vet vet;
-    private Caretakers caretakers;
-    private Trainer trainer;
-    private String outputFilePath;
     private DataParser dataParser;
     private OutputFileWriter outputFileWriter;
 
     public ApplicationController() {
-        dogCreator = new DogCreator();
-        vet = new Vet();
-        caretakers = new Caretakers();
-        trainer = new Trainer();
-        outputFilePath = System.getProperty("user.home");
+        String outputFilePath = System.getProperty("user.home");
         dataParser = new DataParser();
         outputFileWriter = new OutputFileWriter(outputFilePath);
     }
@@ -82,7 +73,7 @@ class ApplicationController {
     }
 
     private DayEmulator initializeDay() {
-        List<Dog> dogs = new ArrayList<>();
+        List<Dog> dogs;
         dogs = initializeDogs();
 
         List<Aviary> aviaries = new ArrayList<>();
@@ -90,7 +81,7 @@ class ApplicationController {
             aviaries.add(new Aviary(dog));
         }
 
-        return new DayEmulator(aviaries, dogs, vet, caretakers, trainer);
+        return new DayEmulator(aviaries, dogs, new Vet(), new Caretakers(), new Trainer());
     }
 
 
@@ -101,8 +92,12 @@ class ApplicationController {
     private List<Dog> initializeDogs() {
         Random random = new Random();
         List<Dog> dogs = new ArrayList<>();
+        DogInitializer dogInitializer = new DogAgeInitializer();
+        dogInitializer.linkWith(new DogHealthInitializer())
+                .linkWith(new DogDrewUpInitializer());
+
         for (int i = 1; i <= (random.nextInt(20) + 6); i++) {
-            dogs.add(dogCreator.initializeDog(i));
+            dogs.add(dogInitializer.initParam(new Dog(i)));
         }
         logger.info("dogs are created");
         outputFileWriter.writeOutputFile(dataParser.parseData(dogs, "dog farm contains dogs: "));
