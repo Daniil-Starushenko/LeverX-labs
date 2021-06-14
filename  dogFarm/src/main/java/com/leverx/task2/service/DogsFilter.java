@@ -13,9 +13,9 @@ public class DogsFilter {
                     .collect(Collectors.toList());
     }
 
-    public static List<Dog> filterByHealth(List<Dog> dogs, boolean isHealthy)  {
+    public static List<Dog> filterByHealth(List<Dog> dogs)  {
         return dogs.stream()
-                .filter(dog -> dog.isHealthy() == isHealthy)
+                .filter(Dog::isIll)
                 .collect(Collectors.toList());
     }
 }

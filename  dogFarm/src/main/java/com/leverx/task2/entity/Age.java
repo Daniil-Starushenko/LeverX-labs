@@ -9,19 +9,19 @@ public enum Age {
     ADULT("adult"),
     OLD("old");
 
-    private String age;
+    private String value;
 
-    Age(String age) {
-        this.age = age;
+    Age(String value) {
+        this.value = value;
     }
 
     public String getAge() {
-        return age;
+        return value;
     }
 
-    public static Age getByTag(String tag) {
+    public static Age getByTag(String value) {
         for (Age age: Age.values()) {
-            if (age.getAge().equals(tag)) {
+            if (age.getAge().equals(value)) {
                 return age;
             }
         }

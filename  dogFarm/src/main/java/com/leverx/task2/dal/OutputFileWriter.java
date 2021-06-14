@@ -6,11 +6,9 @@ import java.io.IOException;
 import java.util.List;
 
 public class OutputFileWriter {
-    private String path;
     private final File file;
 
     public OutputFileWriter(String path) {
-        this.path = path;
         file = new File(path, "output.txt");
 
     }

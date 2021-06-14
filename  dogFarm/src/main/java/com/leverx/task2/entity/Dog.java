@@ -10,6 +10,7 @@ public class Dog {
     private Age age;
     private int yearsOld;
     private boolean isHealthy;
+    private boolean isIll;
     private boolean isHungry;
     private boolean isDrewUp;
     private Job job;
@@ -17,7 +18,7 @@ public class Dog {
     //dog is hungry when created
     public Dog(int dogNumber) {
         this.dogNumber = dogNumber;
-        isHungry = true;
+        this.isHungry = true;
     }
 
     public Job getJob() {
@@ -74,6 +75,14 @@ public class Dog {
 
     public void setDogNumber(int dogNumber) {
         this.dogNumber = dogNumber;
+    }
+
+    public boolean isIll() {
+        return isIll;
+    }
+
+    public void setIll() {
+        isIll = !isHealthy;
     }
 
     @Override

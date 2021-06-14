@@ -8,6 +8,7 @@ public class DogHealthInitializer extends DogInitializer {
     @Override
     public Dog initParam(Dog dog) {
         dog.setHealthy(isHealthy());
+        dog.setIll();
         return checkNext(dog);
     }
 
