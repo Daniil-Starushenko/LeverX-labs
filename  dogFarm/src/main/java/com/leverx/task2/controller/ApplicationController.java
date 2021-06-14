@@ -5,6 +5,7 @@ import com.leverx.task2.entity.*;
 import com.leverx.task2.service.DataParser;
 import com.leverx.task2.service.DayEmulator;
 import com.leverx.task2.service.initialize.dog.*;
+import com.leverx.task2.service.initialize.staff.StaffFactory;
 import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
@@ -81,7 +82,7 @@ class ApplicationController {
             aviaries.add(new Aviary(dog));
         }
 
-        return new DayEmulator(aviaries, dogs, new Vet(), new Caretakers(), new Trainer());
+        return new DayEmulator(aviaries, dogs, new StaffFactory());
     }
 
 

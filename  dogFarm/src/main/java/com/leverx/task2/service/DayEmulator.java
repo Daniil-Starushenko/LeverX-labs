@@ -1,6 +1,8 @@
 package com.leverx.task2.service;
 
 import com.leverx.task2.entity.*;
+import com.leverx.task2.service.initialize.staff.StaffFactory;
+import com.leverx.task2.service.initialize.staff.StaffType;
 import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
@@ -20,12 +22,12 @@ public class DayEmulator {
     private Caretakers caretakers;
     private Trainer trainer;
 
-    public DayEmulator(List<Aviary> aviaries, List<Dog> dogs, Vet vet, Caretakers caretakers, Trainer trainer) {
+    public DayEmulator(List<Aviary> aviaries, List<Dog> dogs, StaffFactory staffFactory) {
         this.aviaries = aviaries;
         this.dogs = dogs;
-        this.vet = vet;
-        this.caretakers = caretakers;
-        this.trainer = trainer;
+        this.caretakers = (Caretakers)staffFactory.getStaff(StaffType.CARETAKERS);;
+        this.trainer = (Trainer)staffFactory.getStaff(StaffType.TRAINER);
+        this.vet = (Vet)staffFactory.getStaff(StaffType.VET);
     }
 
     public List<Dog> feedYoungDogs() {

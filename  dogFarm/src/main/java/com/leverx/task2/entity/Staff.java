@@ -5,4 +5,4 @@ package com.leverx.task2.entity;
  * that is  need to detach classes which are needed to take different actions on
  * main objects
  */
-interface Staff {}
+public interface Staff {}
