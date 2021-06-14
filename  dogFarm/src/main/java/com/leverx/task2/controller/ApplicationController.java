@@ -37,6 +37,8 @@ class ApplicationController {
 
         feeding(day);
 
+        outResult(DayEmulator::healDogs, "dogs have been examined and healed: ", day);
+
         outputFileWriter.writeOutputFile(Collections.singletonList("aviaries was cleaned: "));
         outputFileWriter.writeOutputFile(day.cleanAviaries());
 
