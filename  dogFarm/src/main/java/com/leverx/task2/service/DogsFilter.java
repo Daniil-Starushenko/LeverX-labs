@@ -13,7 +13,7 @@ public class DogsFilter {
                     .collect(Collectors.toList());
     }
 
-    public static List<Dog> filterByHealth(List<Dog> dogs)  {
+    public static List<Dog> filterByIll(List<Dog> dogs)  {
         return dogs.stream()
                 .filter(Dog::isIll)
                 .collect(Collectors.toList());

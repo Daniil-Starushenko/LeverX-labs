@@ -52,7 +52,7 @@ public class DayEmulator {
     }
 
     public List<Dog> healDogs() {
-        List<Dog> illDogs = DogsFilter.filterByHealth(dogs);
+        List<Dog> illDogs = DogsFilter.filterByIll(dogs);
         illDogs.forEach(dog -> vet.examineDog(dog));
 
         return illDogs;
